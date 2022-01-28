@@ -14,9 +14,9 @@ public class RegisterTest {
     public WebDriver driver;
 
     @Test
+    public void Register() {
 
-    public void Register() throws InterruptedException {
-
+        //initialize the webdriver
         System.setProperty("webdriver.chrome.driver","/Users/ravram/AutomationPractice/src/test/resources/chromedriver");
         driver = new ChromeDriver();
         driver.get("http://demo.automationtesting.in/Index.html");
