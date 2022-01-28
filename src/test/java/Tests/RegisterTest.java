@@ -2,10 +2,7 @@ package Tests;
 
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -81,6 +78,33 @@ public class RegisterTest {
         // select Android from the "Select" dropdown
         Select skills = new Select(driver.findElement(By.id("Skills")));// find the last name field and fill in value
         skills.selectByValue("Android");
+
+        //find and fill the country
+        WebElement country = driver.findElement(By.className("select2-selection__arrow"));
+        country.click();
+        WebElement searchCountry = driver.findElement(By.className("select2-search__field"));
+        String myCountryValue = "Denmark";
+        searchCountry.sendKeys(myCountryValue);
+        searchCountry.sendKeys(Keys.ENTER);
+
+        //find and select my birthday
+        Select myBirthdayYear = new Select(driver.findElement(By.id("yearbox")));
+        myBirthdayYear.selectByValue("1991");
+
+        Select myBirthdayMonth = new Select(driver.findElement(By.cssSelector("[placeholder = 'Month']")));
+        myBirthdayMonth.selectByValue("February");
+
+        Select myBirthdayDay = new Select(driver.findElement(By.id("daybox")));
+        myBirthdayDay.selectByValue("12");
+
+        //find and fill the password
+        WebElement password = driver.findElement(By.id("firstpassword"));
+        String passwordValue = "MadalinaAvram91";
+        password.sendKeys(passwordValue);
+
+        //find and fill the password confirmation
+        WebElement confirmPassword = driver.findElement(By.id("secondpassword"));
+        confirmPassword.sendKeys(passwordValue);
 
         // find and click the Submit button
         WebElement submitButton = driver.findElement(By.id("submitbtn"));
