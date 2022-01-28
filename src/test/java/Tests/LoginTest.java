@@ -48,7 +48,7 @@ public class LoginTest {
         WebElement errorMessage = driver.findElement(By.id("errormsg"));
         String expectedmessage = "Invalid User Name or PassWord";
         String actualErrorMessage = errorMessage.getText();
-//        Assert.assertEquals("Textul cautat nu este corect",expectedmessage,actualErrorMessage);
+//        Assert.assertEquals("Textul cautat nu este corect",expectedmessage,actualErrorMessage); sau vezi mai jos
         Assert.assertTrue( actualErrorMessage.equals(expectedmessage));
 
         //quit = inchide instanta cu toate taburi deschise;
