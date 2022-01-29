@@ -1,26 +1,18 @@
 package Tests;
 
 
+import Base.SharedData;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
 
-public class RegisterTest {
-
-    public WebDriver driver;
+public class RegisterTest extends SharedData {
 
     @Test
     public void Register() {
-
-        //initialize the webdriver
-        System.setProperty("webdriver.chrome.driver","/Users/ravram/AutomationPractice/src/test/resources/chromedriver");
-        driver = new ChromeDriver();
-        driver.get("http://demo.automationtesting.in/Index.html");
-        driver.manage().window().maximize();
 
         // find and click the 'Skip Sign In' button
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
@@ -113,8 +105,6 @@ public class RegisterTest {
         // find and click the Refresh button
         WebElement refreshButton = driver.findElement(By.id("Button1"));
         refreshButton.click();
-
-        driver.quit();
 
     }
 }

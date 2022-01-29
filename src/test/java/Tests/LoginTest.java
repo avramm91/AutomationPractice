@@ -1,5 +1,6 @@
 package Tests;
 
+import Base.SharedData;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -7,26 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginTest {
-
-    //declaram variabila WebDriver
-
-    public WebDriver driver;
+public class LoginTest extends SharedData {
 
     @Test
 
     public void Login(){
-        //setam driverul de Chrome
-        System.setProperty("webdriver.chrome.driver","/Users/ravram/AutomationPractice/src/test/resources/chromedriver");
-
-        //dechidem o instanta de Chrome
-        driver = new ChromeDriver();
-
-        //accesam un URL
-        driver.get("http://demo.automationtesting.in/Index.html");
-
-        //facem driverul maximized
-        driver.manage().window().maximize();
 
         WebElement signInElement = driver.findElement(By.id("btn1"));
         signInElement.click();
