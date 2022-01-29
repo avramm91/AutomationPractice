@@ -76,7 +76,7 @@ public class RegisterTest {
         }
 
         // select Android from the "Select" dropdown
-        Select skills = new Select(driver.findElement(By.id("Skills")));// find the last name field and fill in value
+        Select skills = new Select(driver.findElement(By.id("Skills")));
         skills.selectByValue("Android");
 
         //find and fill the country
