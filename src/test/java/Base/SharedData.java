@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.time.Duration;
+
 public class SharedData {
 
     public WebDriver driver;
@@ -23,6 +25,9 @@ public class SharedData {
 
         //facem driverul maximized
         driver.manage().window().maximize();
+
+        //wait implicit
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
 //    @After

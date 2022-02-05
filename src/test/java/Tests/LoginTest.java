@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.SharedData;
+import Help.ElementMethods;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -10,32 +11,32 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest extends SharedData {
 
+    public ElementMethods elementMethods;
+
     @Test
 
     public void Login(){
 
+        elementMethods = new ElementMethods(driver);
+
         WebElement signInElement = driver.findElement(By.id("btn1"));
-        signInElement.click();
+        elementMethods.clickElement(signInElement);
 
         WebElement emailElement = driver.findElement(By.cssSelector("input[placeholder='E mail']"));
-        String emailValue = "sesermanmadalina@yahoo.com";
-        emailElement.sendKeys(emailValue);
+        elementMethods.fillElement(emailElement,"sesermanmadalina@yahoo.com");
 
         WebElement passwordElement = driver.findElement(By.cssSelector("input[placeholder='Password']"));
-        String passwordValue = "Madalina91";
-        passwordElement.sendKeys(passwordValue);
+        elementMethods.fillElement(emailElement,"Madalina91");
 
         WebElement enterButton = driver.findElement(By.id("enterbtn"));
-        enterButton.click();
+        elementMethods.clickElement(enterButton);
 
 //        WebElement errorMessage = driver.findElement(By.id("errormsg"));
 //        errorMessage.isDisplayed(); arata doar ca elementul este pe pagina
 
         WebElement errorMessage = driver.findElement(By.id("errormsg"));
-        String expectedmessage = "Invalid User Name or PassWord";
-        String actualErrorMessage = errorMessage.getText();
-//        Assert.assertEquals("Textul cautat nu este corect",expectedmessage,actualErrorMessage); sau vezi mai jos
-        Assert.assertTrue( actualErrorMessage.equals(expectedmessage));
+        elementMethods.validateTextElement(errorMessage,"Invalid User Name or PassWord");
+
 
         //quit = inchide instanta cu toate taburi deschise;
         //close = inchide tabul curent

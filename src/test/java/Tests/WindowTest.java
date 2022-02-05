@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.SharedData;
+import Help.TabWindowMethods;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,8 +12,12 @@ import java.util.List;
 
 public class WindowTest extends SharedData {
 
+    public TabWindowMethods tabWindowMethods;
+
     @Test
     public void windowTest(){
+
+        tabWindowMethods = new TabWindowMethods(driver);
 
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
         skipSignInElement.click();
@@ -30,19 +35,10 @@ public class WindowTest extends SharedData {
         WebElement clickElement = driver.findElement(By.cssSelector("#Tabbed>a>button"));
         clickElement.click();
 
-        System.out.println("Titlul paginii: "+ driver.getTitle());
 
-        List<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
-
-        System.out.println("Titlul paginii: "+ driver.getTitle());
-
-        driver.close();
-
-        driver.switchTo().window(tabs.get(0));
-
-        System.out.println("Titlul paginii: "+ driver.getTitle());
-
+        tabWindowMethods.switchToTab(1);
+        tabWindowMethods.closeCurrentTab();
+        tabWindowMethods.switchToTab(0);
 
 
         //separate windows
@@ -50,16 +46,10 @@ public class WindowTest extends SharedData {
         WebElement clickElementSeparateWindow = driver.findElement(By.cssSelector("#Seperate>button"));
         clickElementSeparateWindow.click();
 
-        System.out.println("Titlul paginii: "+ driver.getTitle());
 
-        List<String> window = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(window.get(1));
-
-        System.out.println("Titlul paginii: "+ driver.getTitle());
-
-        driver.close();
-        driver.switchTo().window(window.get(0));
-        System.out.println("Titlul paginii: "+ driver.getTitle());
+        tabWindowMethods.switchToTab(1);
+        tabWindowMethods.closeCurrentTab();
+        tabWindowMethods.switchToTab(0);
 
         //multiple windows
         windowOptions.get(2).click();
@@ -67,14 +57,12 @@ public class WindowTest extends SharedData {
         clickElementMultipleWindow.click();
         System.out.println("Titlul paginii: "+ driver.getTitle());
 
-        List<String> multiplewindow = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(multiplewindow.get(1));
 
-        System.out.println("Titlul paginii: "+ driver.getTitle());
-
-        driver.close();
-        driver.switchTo().window(multiplewindow.get(0));
-        System.out.println("Titlul paginii: "+ driver.getTitle());
+        tabWindowMethods.switchToTab(2);
+        tabWindowMethods.closeCurrentTab();
+        tabWindowMethods.switchToTab(1);
+        tabWindowMethods.closeCurrentTab();
+        tabWindowMethods.switchToTab(0);
 
 
 
