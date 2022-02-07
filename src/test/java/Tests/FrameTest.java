@@ -35,7 +35,7 @@ public class FrameTest extends SharedData {
 
        frameMethods.switchtoFrameById("singleframe");
         WebElement inputText = driver.findElement(By.cssSelector("div>input[type = 'text']"));
-        inputText.sendKeys("Hello Mada!");
+        elementMethods.fillElement(inputText,"Hello Mada!");
         frameMethods.switchtoDefault();
 
         //IFrame in Iframe

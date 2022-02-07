@@ -73,11 +73,9 @@ public class RegisterTest extends SharedData {
 
         //find and fill the country
         WebElement country = driver.findElement(By.className("select2-selection__arrow"));
-        country.click();
+        elementMethods.clickElement(country);
         WebElement searchCountry = driver.findElement(By.className("select2-search__field"));
-        String myCountryValue = "Denmark";
-        searchCountry.sendKeys(myCountryValue);
-        searchCountry.sendKeys(Keys.ENTER);
+      elementMethods.fillElement(searchCountry, "Denmark");
 
         //find and select my birthday
         WebElement myBirthdayYear = driver.findElement(By.id("yearbox"));

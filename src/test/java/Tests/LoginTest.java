@@ -26,13 +26,10 @@ public class LoginTest extends SharedData {
         elementMethods.fillElement(emailElement,"sesermanmadalina@yahoo.com");
 
         WebElement passwordElement = driver.findElement(By.cssSelector("input[placeholder='Password']"));
-        elementMethods.fillElement(emailElement,"Madalina91");
+        elementMethods.fillElement(passwordElement,"Madalina91");
 
         WebElement enterButton = driver.findElement(By.id("enterbtn"));
         elementMethods.clickElement(enterButton);
-
-//        WebElement errorMessage = driver.findElement(By.id("errormsg"));
-//        errorMessage.isDisplayed(); arata doar ca elementul este pe pagina
 
         WebElement errorMessage = driver.findElement(By.id("errormsg"));
         elementMethods.validateTextElement(errorMessage,"Invalid User Name or PassWord");
